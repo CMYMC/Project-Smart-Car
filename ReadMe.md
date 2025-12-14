@@ -12,7 +12,7 @@ STM32, Arduino, Raspberry Pi, MariaDB를 이용하여 전방 장애물 거리에
 ##  2. 구성도 (System Architecture)
 
 
-<img width="766" height="405" alt="흐름도" src="https://github.com/user-attachments/assets/ef64bb3f-b506-48f7-a940-4a2646abf714" />
+<img width="1283" height="639" alt="흐름도" src="https://github.com/user-attachments/assets/e50b1777-bfa9-469c-a416-0fb383daab21" />
 
 
 * **STM32 :** 초음파 센서로 거리 측정, PID 알고리즘을 통한 DC 모터 속도 제어, 블루투스를 통한 데이터 송신
