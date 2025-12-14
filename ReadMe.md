@@ -12,6 +12,7 @@ STM32, Arduino, Raspberry Pi, MariaDB를 이용하여 전방 장애물 거리에
 ##  2. 구성도 (System Architecture)
 
 
+<img width="766" height="405" alt="흐름도" src="https://github.com/user-attachments/assets/28adbede-2c3b-45e9-b075-cbfb8dbb1f07" />
 
 * **STM32 :** 초음파 센서로 거리 측정, PID 알고리즘을 통한 DC 모터 속도 제어, 블루투스를 통한 데이터 송신
 * **Raspberry Pi :** 중앙 제어 서버, 이기종 디바이스(STM32↔Arduino) 간 데이터 중계 및 처리 
@@ -25,6 +26,8 @@ STM32, Arduino, Raspberry Pi, MariaDB를 이용하여 전방 장애물 거리에
 ##  3. 기능 설명
 
 ### 장애물 거리에 따른 모터 제어(STM)
+<img width="833" height="391" alt="STM32" src="https://github.com/user-attachments/assets/9f62459b-ae32-4fc5-aaf7-edd4c424fb3d" />
+
 초음파 센서를 통해 전방 장애물과의 거리를 실시간으로 측정하고, 거리에 따라 모터의 속도를 자동으로 조절
 
 1.  **10cm 미만:** 충돌 위험 감지 시 모터 완전 정지 (속도 0)
@@ -32,12 +35,16 @@ STM32, Arduino, Raspberry Pi, MariaDB를 이용하여 전방 장애물 거리에
 3.  **30cm 초과:** 안전 거리 확보 시 최대 속도로 주행 (속도 100)
 
 ### 데이터 전송 (Server & DB)
+<img width="1272" height="588" alt="데이터" src="https://github.com/user-attachments/assets/43c7da83-f1f8-4945-8461-22f3a84d7d64" />
+
 TCP/IP 소켓 통신을 이용한 DB 데이터 전송  
 Wi-Fi / Bluetooth 인터페이스로 데이터를 전송받아 MariaDB에 자동 기록
 1. **실시간 통신:** 1초마다 데이터를 요청하고 송수신하여 딜레이 없는 제어 환경 구축 
 2. **로그 저장:** `car_table`에 차량 ID(car_id), 모터값(car_motor), 거리(car_distance), 속도(car_speed), 날짜/시간 등을 기록하여 사고 분석 데이터로 활용 
 
 ### 데이터 모니터링 (Arduino)
+<img width="1302" height="593" alt="아두이노" src="https://github.com/user-attachments/assets/ed09d8d0-dc37-493a-8078-dacf7309bdee" />
+
 운전자의 차량의 상태를 실시간으로 확인할 수 있도록 시각적인 정보를 제공합니다.
 
 1.  **정보 표시:** WiFi를 통해 수신한 고객 정보, 차량 속도, 거리, PWM 데이터를 LCD에 출력 
